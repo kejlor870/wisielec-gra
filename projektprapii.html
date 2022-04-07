@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--<title> Wisielec | Bartosz Uroda</title>-->
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div id="container">
+            <div id="haslo"> <!-- tu bedzie sie wyswietlac zasloniete haslo -->
+                <h1 id="hasloh1">  </h1>
+                <script>
+                    var haslo = "Ala ma kota";
+                    haslo = haslo.toUpperCase();
+
+                    var StrongerHaslo = "";
+                    // zamiana liter na podloge
+                    for(var i=0; i<10; i++){
+                        if(haslo[i] == " "){
+                            StrongerHaslo += " ";
+                        }else{
+                            StrongerHaslo += "_";
+                        }
+                    }
+
+                    function wypisz_haslo(){
+                        document.getElementById('hasloh1').innerHTML = StrongerHaslo;
+
+                    }
+                    window.onload = wypisz_haslo;
+
+                </script>
+            </div>
+            <div id="wisielec"> <!-- tutaj bedzie wisielec -->
+
+
+            </div>
+            <div id="odgadywanie"> <!-- Pole na wpisanie liter oraz przycisk Zgaduj, tablica z punktami-->
+                <p id="uzyte_samogloski"> Uzyte samogloski: <br></p>
+                <section id="zgadywanie">
+
+                    <h1> Wpisz samogłoskę: </h1>
+                    <input type="text" id="samogloski">
+                    <button type="submit" onclick="sprawdz()" > Sprawdź </button>
+
+                    <h1> Znasz Hasło? </h1>
+                    <input type="text" id="polehaslo">
+                    <button type="submit" onclick="sprawdzhaslo()"> Odgadnij </button>
+
+                    <p id="alertopoprawnosci"></p>
+
+                </section>
+                <script>
+                    var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
+
+                    function sprawdz(){
+                        var tekst = (document.getElementById('samogloski').value).toUpperCase();
+                        var litera = "";
+
+                        // sprawdzanie czy wprowadzona litera jest samogloska
+                        for(var k=0; k<=8; k++){
+                            if(tekst == samogloski[k]){
+                                document.getElementById("alertopoprawnosci").innerHTML = "";
+                                document.getElementById("uzyte_samogloski").innerHTML += tekst + ", ";
+                                
+                                litera = tekst; // przypisujemy litere podana przez uzytkownika zeby ja potem sprawdzic
+                                break;
+                            }else{
+                                document.getElementById("alertopoprawnosci").innerHTML = "Podaj samogloskę!";
+                            }
+
+                        }
+
+                        // Podmiana litery 
+                        
+                        String.prototype.ustawZnak = function(miejsce, znak){
+                            if (miejsce > this.length - 1) return this.toString();
+                            else return this.substr(0, miejsce) + znak + this.substr(miejsce+1);
+                        }
+
+                        for(var l=0; l<haslo.length; l++){
+                            if(StrongerHaslo.charAt(l) == litera){
+                                StrongerHaslo = StrongerHaslo.ustawZnak(l, litera);
+                            }
+
+                        }
+                        /*
+                        for(var l=0; l<haslo.length; l++){
+                            if(haslo.charAt(l) == litera){
+                                alert(l);
+                            }
+                        }
+                        */
+                        
+
+                    }
+
+                    function sprawdzhaslo(){
+                        var polehaslo = (document.getElementById('polehaslo').value).toUpperCase();
+
+                        if(haslo == polehaslo){
+                            alert("Udalo sie");
+
+                        }
+
+
+                    }
+
+                </script>
+
+            </div>
+        </div>
+    </body>
+</html>
