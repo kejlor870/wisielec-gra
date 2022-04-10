@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<title> Wisielec </title>-->
+        <!--<title> Wisielec | Bartosz Uroda | Kamil Skorupa </title>-->
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
 
@@ -16,8 +16,8 @@
 
                     var StrongerHaslo = "";
                     // zamiana liter na podloge
-                    for(var i=0; i<10; i++){
-                        if(haslo[i] == " "){
+                    for(var i=0; i<=10; i++){
+                        if(haslo.charAt(i) == " "){
                             StrongerHaslo += " ";
                         }else{
                             StrongerHaslo += "_";
@@ -33,12 +33,18 @@
                 </script>
             </div>
             <div id="wisielec"> <!-- tutaj bedzie wisielec -->
-
+                <img src="wisielecpng/0.png" width="350" height="520">
+                <section id="divPunkty"> 
+                    <p id="punkty"> Punkty: </p>
+                </section>
+                
 
             </div>
             <div id="odgadywanie"> <!-- Pole na wpisanie liter oraz przycisk Zgaduj, tablica z punktami-->
-                <p id="uzyte_samogloski"> Uzyte samogloski: <br></p>
-                <section id="zgadywanie">
+                <section class="zgadywanie">  
+                    <p id="uzyte_samogloski"> Uzyte samogloski: <br></p>
+                </section>
+                <section class="zgadywanie">
 
                     <h1> Wpisz samogłoskę: </h1>
                     <input type="text" id="samogloski">
@@ -53,7 +59,9 @@
                 </section>
                 <script>
                     var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
-
+                    var punkty = 0;
+                    var uzytesamogloskiTAB = new Array(50);
+                    
                     function sprawdz(){
                         var tekst = (document.getElementById('samogloski').value).toUpperCase();
                         var litera = "";
@@ -62,8 +70,9 @@
                         for(var k=0; k<=8; k++){
                             if(tekst == samogloski[k]){
                                 document.getElementById("alertopoprawnosci").innerHTML = "";
+                                // wypisuje uzyte samogloski
                                 document.getElementById("uzyte_samogloski").innerHTML += tekst + ", ";
-                                
+
                                 litera = tekst; // przypisujemy litere podana przez uzytkownika zeby ja potem sprawdzic
                                 break;
                             }else{
@@ -73,26 +82,21 @@
                         }
 
                         // Podmiana litery 
-                        
-                        String.prototype.ustawZnak = function(miejsce, znak){
+                        String.prototype.ustawZnak = function(miejsce, znak)
+                        {
                             if (miejsce > this.length - 1) return this.toString();
                             else return this.substr(0, miejsce) + znak + this.substr(miejsce+1);
                         }
-
-                        for(var l=0; l<haslo.length; l++){
-                            if(StrongerHaslo.charAt(l) == litera){
-                                StrongerHaslo = StrongerHaslo.ustawZnak(l, litera);
-                            }
-
-                        }
-                        /*
+                        // sprawdzzanie czy litera jest w hasle i na ktorej pozycji oraz podmiana
                         for(var l=0; l<haslo.length; l++){
                             if(haslo.charAt(l) == litera){
-                                alert(l);
+                                StrongerHaslo = StrongerHaslo.ustawZnak(l, litera);
+                                punkty += 2;
+                                document.getElementById('punkty').innerHTML = "Punkty: <br>" + punkty;  
+                                wypisz_haslo();
                             }
+
                         }
-                        */
-                        
 
                     }
 
