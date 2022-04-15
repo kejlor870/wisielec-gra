@@ -22,6 +22,7 @@
     margin: 0px;
     font-size: 300%;
     letter-spacing: 5px;
+    font-family: 'Source Code Pro', monospace;
 
 }
 
@@ -30,7 +31,12 @@
     width: 40%;
     float: left;
     margin-left: 20%;
-    background-color: rgb(243, 174, 89); /* kolor do zmiany na none*/
+    background-color: rgb(243, 174, 89); /* kolor do zmiany na none rgb(243, 174, 89)*/
+
+}
+
+#wisielec img{
+    float: left;
 
 }
 
@@ -43,9 +49,21 @@
 
 }
 
-#zgadywanie{
-    padding-top: 200px;
-
+.zgadywanie{
+    height: 50%;
+    width: 100%;
+    float: left;
 
 }
 
+#divPunkty{
+    height: 100px;
+    width: 100px;
+    float: right;
+    border: 1px solid rgb(112, 75, 30);
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+    font-size: 140%;
+    font-weight: bolder;
+
+}
