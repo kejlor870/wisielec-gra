@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<title> Wisielec </title>-->
+        <!--<title> Wisielec | Bartosz Uroda | Kamil Skorupa </title>-->
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-
+        
     </head>
     <body>
         <div id="container">
@@ -33,7 +33,7 @@
                 </script>
             </div>
             <div id="wisielec"> <!-- tutaj bedzie wisielec -->
-                <img src="wisielecpng/0.png" width="350" height="520">
+                <img src="wisielecpng/0.png" width="350" height="520" id="zdjeciewisielca">
                 <section id="divPunkty"> 
                     <p id="punkty"> Punkty: </p>
                 </section>
@@ -61,18 +61,25 @@
                     var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                     var punkty = 0;
                     var uzytesamogloskiTAB = new Array(50);
-                    
+                    var ktorywisielec = 0;
+
+                    for(i=0; i<=50; i++){
+                        uzytesamogloskiTAB[i] = 0;
+
+                    }
+
                     function sprawdz(){
                         var tekst = (document.getElementById('samogloski').value).toUpperCase();
                         var litera = "";
+                        var trafiona = false;
 
                         // sprawdzanie czy wprowadzona litera jest samogloska
                         for(var k=0; k<=8; k++){
                             if(tekst == samogloski[k]){
                                 document.getElementById("alertopoprawnosci").innerHTML = "";
                                 // wypisuje uzyte samogloski
-                                document.getElementById("uzyte_samogloski").innerHTML += tekst + ", ";
-
+                                document.getElementById("uzyte_samogloski").innerHTML += tekst + ", &nbsp;";
+                                
                                 litera = tekst; // przypisujemy litere podana przez uzytkownika zeby ja potem sprawdzic
                                 break;
                             }else{
@@ -81,21 +88,39 @@
 
                         }
 
-                        // Podmiana litery 
+                        // Skrypt podmiany litery 
                         String.prototype.ustawZnak = function(miejsce, znak)
                         {
                             if (miejsce > this.length - 1) return this.toString();
                             else return this.substr(0, miejsce) + znak + this.substr(miejsce+1);
                         }
-                        // sprawdzzanie czy litera jest w hasle i na ktorej pozycji oraz podmiana
+                        // sprawdzzanie czy litera jest w hasle i na ktorej pozycji oraz jej podmiana
                         for(var l=0; l<haslo.length; l++){
                             if(haslo.charAt(l) == litera){
                                 StrongerHaslo = StrongerHaslo.ustawZnak(l, litera);
-                                punkty += 2;
+
+                                // Sprawdzanie czy litera zostala uzyta (blokuje dodawanie punktow przez wpisanie tej samej samogloski)
+                                if(uzytesamogloskiTAB[l] !== litera){
+                                    punkty += 2;
+                                }else{
+                                    console.log('Podales juz ta litere');
+                                    break;
+                                }
+
+                                trafiona = true;
+                                uzytesamogloskiTAB[l] = litera;
+
+
                                 document.getElementById('punkty').innerHTML = "Punkty: <br>" + punkty;  
                                 wypisz_haslo();
                             }
 
+                        }
+
+                        if(trafiona == false){
+                            ktorywisielec += 1;
+                            document.getElementById("zdjeciewisielca").src = "wisielecpng/" + ktorywisielec + ".png"
+                            punkty -= 2;
                         }
 
                     }
@@ -107,7 +132,6 @@
                             alert("Udalo sie");
 
                         }
-
 
                     }
 
