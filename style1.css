@@ -43,6 +43,7 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     
 }
 
+
 #wisielec img{
     float: left;
 
@@ -64,6 +65,7 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     float: left;
 
 }
+
 
 #divPunkty{
     height: 100px;
@@ -89,7 +91,6 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     text-align: center;
     visibility: hidden;
     display: block;
-
 }
 
 #wynik_koncowy{
@@ -102,47 +103,41 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 }
 
 /* Animacja */
-.animated { 
-    -webkit-animation-duration: 1s; 
-    animation-duration: 1s; 
-    -webkit-animation-fill-mode: both; 
-    animation-fill-mode: both; 
-    animation-iteration-count:infinite; 
-    -webkit-animation-iteration-count:infinite; 
- } 
- 
- @-webkit-keyframes fadeIn { 
-     0% {opacity: 0;} 
-     100% {opacity: 1;} 
- } 
- @keyframes fadeIn { 
-     0% {opacity: 0;} 
-     100% {opacity: 1;} 
- } 
- .fadeIn { 
-     -webkit-animation-name: fadeIn; 
-     animation-name: fadeIn; 
- }
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
 
-
- .stroke {
-    font-size: 21px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ff0000;
-    -webkit-text-fill-color: white;
-    letter-spacing: 4px;
-    font-family: Impact, Charcoal, sans-serif;
+@-webkit-keyframes pulse { 
+    0% { -webkit-transform: scale(1); } 
+    50% { -webkit-transform: scale(1.1); } 
+    100% { -webkit-transform: scale(1); } 
+} 
+@keyframes pulse { 
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.1); } 
+    100% { transform: scale(1); } 
+} 
+.pulse { 
+    -webkit-animation-name: pulse; 
+    animation-name: pulse; 
 }
 
 /* */
-
-@keyframes wysuwanie{
+@keyframes wysuwanie
+{
   0% { height:0px; }
   100% { height:520px; }
-
 }
 
 @keyframes pojawianie_sie{
     from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes znikanie{
+    from { opacity: 1; }
+  to { opacity: 0; }
 }
