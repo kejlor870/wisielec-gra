@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<title> Wisielec | Bartosz Uroda | Kamil Skorupa </title>-->
+        <title> Wisielec | Bartosz Uroda | Kamil Skorupa </title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="wisielecpng/icon.png">
         
     </head>
     <body>
         <div id="container">
             <div id="haslo"> <!-- tu bedzie sie wyswietlac zasloniete haslo -->
                 <h1 id="hasloh1">  </h1>
+                <script type="text/javascript" src="hasla.js"></script>
                 <script>
-                    var haslo = "Ala ma kota";
                     haslo = haslo.toUpperCase();
 
-                    var StrongerHaslo = "";
-                    // zamiana liter na podloge
-                    for(var i=0; i<=10; i++){
-                        if(haslo.charAt(i) == " "){
-                            StrongerHaslo += " ";
-                        }else{
-                            StrongerHaslo += "_";
-                        }
-                    }
-
+                    var StrongerHaslo = haslo.replaceAll(/[A,Ą,E,Ę,I,O,U,Y]/g, "_");
+                    
                     function wypisz_haslo(){
                         document.getElementById('hasloh1').innerHTML = StrongerHaslo;
 
                     }
                     window.onload = wypisz_haslo;
 
+
                 </script>
             </div>
             <div id="gra">
                 <div id="wisielec"> <!-- tutaj bedzie wisielec -->
-                    <img src="wisielecpng/0.png" width="70%" height="520" id="zdjeciewisielca">
+                    <img src="wisielecpng/0.png" id="zdjeciewisielca">
                     <section id="divPunkty"> 
                         <p id="punkty"> Punkty: <br> 0</p>
                     </section>
@@ -48,16 +42,29 @@
                         <h1> Wpisz samogłoskę: </h1>
                         <input type="text" maxlength="1" id="samogloski" >
                         <button type="submit" onclick="sprawdz()" > Sprawdź </button>
+                        <!--
+                        <button type="submit" value="A" onclick="doAction(this.value)"> A </button>
+                        <button type="submit" value="E" onclick="doAction(this.value)"> E </button>
+                        <script>
+                            function doAction(value)
+                            {
+                            // Don't really have anything to set...just show the value
+                            console.log(value);
+                            }
+                           
+                        </script>
+                        -->
 
+                        <!--
                         <h1> Znasz Hasło? </h1>
                         <input type="text" id="polehaslo">
                         <button type="submit" onclick="sprawdzhaslo()"> Odgadnij </button>
-
+                        -->
                         <p id="alertopoprawnosci" class="animated fadeIn pulse" ></p>
 
                     </section>
 
-                    <hr style="border: 1px solid rgb(112, 75, 30);"> 
+                    <hr style="border: 1px dashed rgb(112, 75, 30);"> 
 
                     <section class="zgadywanie">  
                         <p id="uzyte_samogloski"> Uzyte samogloski: <br></p>
@@ -70,7 +77,7 @@
             </div>
 
             <div id="wynikik" >
-                <h1 id="wynik_koncowy"> Wygrales </h1>
+                <h1 id="wynik_koncowy"> Zgadłeś </h1>
                 <p id="koncowa_liczba_punktow"> Twoja liczba punktów: </p>
                 <script type="text/javascript" src="skrypt.js">
                 </script>

@@ -45,6 +45,8 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 
 #wisielec img{
     float: left;
+    width: 70%;
+    height: 520px;
 
 }
 
@@ -55,6 +57,7 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     background: rgb(122,195,143);
 background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1) 62%); /* kolor do zmiany na none*/
     text-align: center;
+    border-left: 2px solid rgb(112, 75, 30);
 
 }
 
@@ -65,12 +68,19 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 
 }
 
+.zgadywanie h1{
+    margin-top: 20%;
+
+}
+
 #divPunkty{
     height: 100px;
     width: 100px;
     float: right;
-    border: 1px solid rgb(112, 75, 30);
-    border-radius: 0 0 20px 20px;
+    border-left: 2px solid rgb(112, 75, 30);
+    border-bottom: 2px solid rgb(112, 75, 30);
+    border-top: 2px solid rgb(112, 75, 30);
+    border-radius: 20px 0 0 20px;
     text-align: center;
     font-size: 140%;
     font-weight: bolder;
@@ -83,21 +93,31 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 
 #wynikik{
     position: absolute;
-    background-color: rgb(255, 230, 0);
-    height: 520px;
-    width: 99%;
+    background-color: #ffc60b;
+    height: 100%;
+    width: 99.9%;
     text-align: center;
     visibility: hidden;
     display: block;
+    color: #feffdb;
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+   1px -1px 0 #000,
+  -1px -1px 0 #000;
 
 }
 
 #wynik_koncowy{
-    font-size: 500%;
+    font-size: 600%;
     padding: 0px;
     margin: 0px;
     letter-spacing: 5px;
     font-family: 'Source Code Pro', monospace;
+
+}
+
+#koncowa_liczba_punktow{
+    font-size: larger;
 
 }
 
@@ -138,7 +158,7 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 
 @keyframes wysuwanie{
   0% { height:0px; }
-  100% { height:520px; }
+  100% { height:100%; }
 
 }
 
@@ -146,3 +166,9 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     from { opacity: 0; }
   to { opacity: 1; }
 }
+
+@keyframes zmiana_koloru_tla{
+    0% { background-color: #7ac38f; }
+    100% { background-color: #feffdb; }
+  
+  }
