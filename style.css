@@ -68,10 +68,42 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
 
 }
 
+.zgadywanie button{
+    height: 20%;
+    width: 20%;
+    margin-top: 5%;
+    background: rgb(177,233,163);
+background: linear-gradient(180deg, rgba(177,233,163,1) 3%, rgba(122,195,143,1) 100%);
+    border-radius: 15%;
+    border: 2px solid rgb(112, 75, 30);
+    font-size: 120%;
+    font-weight: bolder;
+
+
+}
+
+.zgadywanie button:hover{
+    height: 22%;
+    width: 22%;
+    margin-top: 5%;
+    background-color: Transparent;
+    border-radius: 15%;
+    border: 2px solid rgb(37, 201, 22);
+    font-weight: bolder;
+    cursor: pointer;
+    animation-name: przycisk_samogloske;
+    animation-duration: 0.3s;
+    background-repeat: no-repeat;
+    animation-fill-mode: both;
+
+}
+
+/*
 .zgadywanie h1{
     margin-top: 20%;
 
 }
+*/
 
 #divPunkty{
     height: 100px;
@@ -172,3 +204,20 @@ background: linear-gradient(180deg, rgba(122,195,143,1) 30%, rgba(177,233,163,1)
     100% { background-color: #feffdb; }
   
   }
+
+@keyframes przycisk_samogloske{
+    0% { background-color: Transparent; 
+        font-size: 120%;
+        height: 20%;
+        width: 20%;
+        border-color: rgb(112, 75, 30);
+    }
+    100% { 
+        background-color: #88e0d0; 
+        border-color: #88e0d0;
+        font-size: 140%;
+        height: 22%;
+        width: 22%;
+    }
+
+}

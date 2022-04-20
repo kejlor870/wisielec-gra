@@ -9,12 +9,11 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
 
                     }
                     
-                    function sprawdz(){
-                        var tekst = (document.getElementById('samogloski').value).toUpperCase();
+                    function sprawdz(value){
+                        var tekst = value;
                         var litera = "";
                         var trafiona = false;
-                        document.getElementById('samogloski').value=''; // kasuje wpisany tekst do inputa po przeslaniu
-
+                        
                         // sprawdzanie czy wprowadzona litera jest samogloska
                         for(var k=0; k<=8; k++){
                             if(tekst == samogloski[k]){
