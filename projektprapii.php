@@ -5,7 +5,22 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="wisielecpng/icon.png">
-        
+        <style> 
+            /* stylowanie tablicy */
+            table, tr, th, td{
+                border: 1px solid black; 
+                margin-left: auto; 
+                margin-right: auto; 
+                border-collapse: collapse;
+
+            }
+
+            th, tr, td{
+                padding: 10px;
+
+            }
+    
+        </style>
     </head>
     <body>
         <div id="container">
@@ -109,6 +124,7 @@
                         $name = $_GET['name'];
 
                         $sql = "INSERT INTO wyniki2 VALUES ('', '$name', '$punkty')";
+                        $wynik = mysqli_query($baza, $sql);
                         
                     }
 
@@ -118,11 +134,11 @@
                     
                     
                     if (mysqli_num_rows($wynik2) > 0) {
-                        echo "<h3 style='margin-left: auto; margin-right: auto; border-collapse: collapse; margin-top: 2%; '> Tablica wyników </h3>";
-                        echo "<table style='border: 1px solid black; margin-left: auto; margin-right: auto; border-collapse: collapse;'>";
-                        echo "<th style='border: 1px solid black; border-collapse: collapse; padding: 10px;'> Imię: </th><th style='border: 1px solid black; border-collapse: collapse; padding: 10px;'> Punkty: </th>";
+                        echo "<h3 style='margin-top: 2%; '> Tablica wyników </h3>";
+                        echo "<table>";
+                        echo "<th> Imię: </th><th> Punkty: </th>";
                         while($wiersz2 = mysqli_fetch_assoc($wynik2)) {
-                            echo "<tr style='border: 1px solid black; border-collapse: collapse; padding: 10px;'> <td style='border: 1px solid black; border-collapse: collapse; padding: 10px;'>" . $wiersz2["imie"]. "</td><td style='border: 1px solid black; border-collapse: collapse; padding: 10px;'>" . $wiersz2["punkty"]. "</td></tr>";
+                            echo "<tr><td>" . $wiersz2["imie"]. "</td><td>" . $wiersz2["punkty"]. "</td></tr>";
                         }
                         echo "</table>";
                     } else {
