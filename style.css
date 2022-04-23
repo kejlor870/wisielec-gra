@@ -153,6 +153,22 @@ background: linear-gradient(180deg, rgba(177,233,163,1) 3%, rgba(122,195,143,1) 
 
 }
 
+#formularz{
+    border: 1px solid black;
+    height: auto;
+    width: max-content;
+    padding: 2%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#formularz input{
+    background-color: rgb(197, 197, 197);
+
+}
+
+
 /* Animacja */
 .animated { 
     -webkit-animation-duration: 1s; 

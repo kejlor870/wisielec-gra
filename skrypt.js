@@ -72,9 +72,16 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                             animacja_wyniku(); // wywolanie animacji
                             document.getElementById('wynikik').style.visibility = 'visible';
                             document.getElementById('wynik_koncowy').innerHTML = 'Przegrałeś';
-                            document.getElementById('koncowa_liczba_punktow').innerHTML = "Twoja liczba punktów: " + punkty;
+                            document.getElementById('koncowa_liczba_punktow2').innerHTML = punkty;
+
+
+
+                            //pobieranie_punktow();
+
                             document.getElementById('wynikik').style.background = 'gray';
                             document.getElementById('haslo').style.backgroundColor = "lightgray";
+
+                            
                         }
                         
                         sprawdzhaslo();
@@ -89,14 +96,17 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                         if(haslo == StrongerHaslo){
                             animacja_wyniku(); // wywolanie animacji
                             
-                            document.getElementById('koncowa_liczba_punktow').innerHTML = "Twoja liczba punktów: " + punkty;
+                            document.getElementById('koncowa_liczba_punktow2').innerHTML = punkty;
+
+                            //pobieranie_punktow();
+
                             document.getElementById('hasloh1').innerHTML = haslo;
                             document.getElementById('alertopoprawnosci').innerHTML = "";
                             document.getElementById('haslo').style.animationName = "zmiana_koloru_tla";
                             document.getElementById('haslo').style.animationDuration = "4s";
                             document.getElementById('haslo').style.backgroundColor = "#feffdb";
-                            document.getElementById('wynikik').style.background = "#ffc60b url('https://acegif.com/wp-content/gif/confetti-40.gif')"
-                            
+                            document.getElementById('wynikik').style.background = "#ffc60b url('https://acegif.com/wp-content/gif/confetti-40.gif')";
+                        
                         }
 
                     }
@@ -118,3 +128,14 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                         document.getElementById('hasloh1').style.animationDuration = "3s";
 
                     }
+
+                    /*
+                    function pobieranie_punktow(){
+                        var lpunktow = Number(document.getElementById('koncowa_liczba_punktow2').innerHTML);
+                        console.log(lpunktow);
+                        document.getElementById('pkty').value = lpunktow;
+
+                        
+                    }
+                    */
+                
