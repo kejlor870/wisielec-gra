@@ -74,9 +74,7 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                             document.getElementById('wynik_koncowy').innerHTML = 'Przegrałeś';
                             document.getElementById('koncowa_liczba_punktow2').innerHTML = punkty;
 
-
-
-                            //pobieranie_punktow();
+                            pobieranie_punktow();
 
                             document.getElementById('wynikik').style.background = 'gray';
                             document.getElementById('haslo').style.backgroundColor = "lightgray";
@@ -98,7 +96,7 @@ var samogloski = ["A", "Ą", "E", "Ę", "I", "O", "U", "Y"];
                             
                             document.getElementById('koncowa_liczba_punktow2').innerHTML = punkty;
 
-                            //pobieranie_punktow();
+                            pobieranie_punktow();
 
                             document.getElementById('hasloh1').innerHTML = haslo;
                             document.getElementById('alertopoprawnosci').innerHTML = "";

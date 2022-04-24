@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <link rel="shortcut icon" href="wisielecpng/icon.png">
+        <script type="text/javascript" src="hasla.js"></script>
         <style> 
             /* stylowanie tablicy */
             table, tr, th, td{
@@ -89,7 +90,7 @@
             </div>
 
             <div id="wynikik" >
-                <form method="GET" >
+                <form method="POST" >
                     <h1 id="wynik_koncowy"> Zgadłeś </h1>
                     <script type="text/javascript" src="skrypt.js"></script>
                     <p id="koncowa_liczba_punktow"> Twoja liczba punktów: <span id="koncowa_liczba_punktow2" name="koncowa_liczba_punktow3"> </span> </p>
@@ -99,10 +100,29 @@
                             <h2> Zapisz swój wynik </h2>
                             <p> Imię: </p>
                             <input type="text" name="name" id="inputname">
-                            <p> Punkty: </p>
-                            <input type="number" id="pkty" name="pkt" value="" placeholder="Tylko nie oszukuj ;)">
+                            <input type="number" id="pkty" name="pkt" value="" style="visibility: hidden; display: block;">
+
+                            <script>
+                                function pobieranie_punktow(){
+                                    var lpunktow = Number(document.getElementById('koncowa_liczba_punktow2').innerHTML);
+                                    console.log("Twoje zdobyte punkty: " + lpunktow);
+                                    document.getElementById('pkty').value = lpunktow;
+
+                                    // animacja tabeli wynikow
+                                    document.querySelector('table').style.animationName = "pojawianie_sie";
+                                    document.querySelector('table').style.animationDuration = "6s";
+                                    document.querySelector('h3').style.animationName = "pojawianie_sie";
+                                    document.querySelector('h3').style.animationDuration = "6s";
+                                    
+                                    // animacja formularza
+                                    document.querySelector('#formularz').style.animationName = "pojawianie_sie";
+                                    document.querySelector('#formularz').style.animationDuration = "4s";
+                                                        
+                                }
+                            </script>
+
                             <br><br>
-                            <input type="submit" value="Zapisz">
+                            <input type="submit" value="Zapisz" >
                             
                     </section>
                 </form>
@@ -118,23 +138,23 @@
                     }
                     mysqli_select_db($baza, $dbname);
                     mysqli_query($baza, "SET CHARACTER SET UTF8");
+                    
+                    if(isset($_POST['name']) && isset($_POST['pkt'])){
+                        $punkty = $_POST['pkt'];
+                        $name = $_POST['name'];
 
-                    if(isset($_GET['name']) && isset($_GET['pkt'])){
-                        $punkty = $_GET['pkt'];
-                        $name = $_GET['name'];
-
-                        $sql = "INSERT INTO wyniki2 VALUES ('', '$name', '$punkty')";
+                        $sql = "INSERT INTO wyniki VALUES ('', '$name', '$punkty')";
                         $wynik = mysqli_query($baza, $sql);
                         
                     }
 
 
-                    $sql2 = "SELECT imie, punkty FROM wyniki2 ";
+                    $sql2 = "SELECT imie, punkty FROM wyniki ORDER BY punkty DESC LIMIT 10";
                     $wynik2 = mysqli_query($baza, $sql2);
                     
                     
                     if (mysqli_num_rows($wynik2) > 0) {
-                        echo "<h3 style='margin-top: 2%; '> Tablica wyników </h3>";
+                        echo "<h3 style='margin-top: 2%; '> TOP 10 graczy </h3>";
                         echo "<table>";
                         echo "<th> Imię: </th><th> Punkty: </th>";
                         while($wiersz2 = mysqli_fetch_assoc($wynik2)) {
@@ -145,7 +165,7 @@
                         echo "<br><br> Brak tablicy wyników";
                     }
 
-
+                    mysqli_close($baza);
 
                 ?>
 
